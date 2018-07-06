@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/index.css" rel="stylesheet" />
+    <script>
+        if ('serviceWorker' in navigator) {
+            // 监听service worker消息
+            navigator.serviceWorker.addEventListener('message', function (e) {
+                console.log(e)
+            })
+            navigator.serviceWorker.register('/sw.js').then(function (reg) {
+                console.log('Registration succeeded. Scope is ' + reg.scope);
+            }).catch(function (error) {
+                console.log('Registration failed with ' + error);
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    hello
+    <img src="img/sw.png" style="width: 100px" />
+</body>
+
+</html>
