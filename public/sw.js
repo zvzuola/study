@@ -1,9 +1,10 @@
-const version = 'v64'
+const version = 'v32'
 const cacheWhitelist = [version];
 
-this.addEventListener('install', function (event) {
+self.addEventListener('install', function (event) {
     // 安装后立即激活
-    // this.skipWaiting();
+    // self.skipWaiting();
+    console.log('install')
     event.waitUntil(
         caches.open(version).then(function (cache) {
             return cache.addAll([
@@ -13,26 +14,33 @@ this.addEventListener('install', function (event) {
         })
     );
 });
-this.addEventListener('fetch', function (event) {
+
+self.addEventListener('fetch', function (event) {
     const req = event.request.clone()
+    console.log('fetch', version)
     event.respondWith(
-        caches.match(event.request).then(function (res) {
-            if (res) {
-                return res;
-            }
-            return fetch(event.request)
-            .then(function (response) {
-                return caches.open(version).then(function (cache) {
-                    cache.put(req, response.clone());
-                    return response;
-                });
-            }).catch(err => console.log(err));
+        caches.open(version).then(cache => {
+            return cache.match(event.request).then(function (res) {
+                if (res) {
+                    return res;
+                }
+                throw Error('The cached response that was expected is missing.');
+            }).catch(err => {
+                return fetch(event.request)
+                    .then(function (response) {
+                        return caches.open(version).then(function (cache) {
+                            cache.put(req, response.clone());
+                            return response;
+                        });
+                    });
+            })
         })
     );
 });
 
-this.addEventListener('activate', function (event) {
-    // clients.claim();
+self.addEventListener('activate', function (event) {
+    // self.clients.claim();
+    console.log('activate')
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
@@ -41,7 +49,7 @@ this.addEventListener('activate', function (event) {
                 }
             }));
         }).then(() => {
-            return this.clients.matchAll().then(function (clients) {
+            return self.clients.matchAll().then(function (clients) {
                 return Promise.all(clients.map(function (client) {
                     return client.postMessage('The service worker has activated and ' + 'taken control.');
                 }));

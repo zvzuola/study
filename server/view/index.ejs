@@ -6,12 +6,56 @@
   <title>react</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script>
+    function vote(name) {
+      fetch('/api/vote', {
+        method: 'post',
+        body: JSON.stringify({ name })
+      }).then(res => res.json())
+        .then(res => {
+          console.log(res)
+          updateCount(name, res.count)
+        })
+    }
+
+    function getCount(name) {
+      fetch('/api/getCount', {
+        method: 'post',
+        body: JSON.stringify({ name })
+      }).then(res => res.json())
+        .then(res => {
+          console.log(res)
+          updateCount(name, res.count)
+        })
+    }
+
+    function updateCount(name, count) {
+      document.getElementById(name).innerHTML = count
+    }
+
+    ['Rama', 'Nick', 'Jose'].forEach(
+      name => getCount(name)
+    )
+
   </script>
 </head>
 
 <body>
   <div id="root">
-
+    <div>
+      <button onclick="vote('Rama')">投票Rama</button>
+      总票数：
+      <span id='Rama'></span>
+    </div>
+    <div>
+      <button onclick="vote('Nick')">投票Nick</button>
+      总票数：
+      <span id='Nick'></span>
+    </div>
+    <div>
+      <button onclick="vote('Jose')">投票Jose</button>
+      总票数：
+      <span id='Jose'></span>
+    </div>
   </div>
 </body>
 
