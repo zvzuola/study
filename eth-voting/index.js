@@ -16,9 +16,10 @@ module.exports = function () {
             return VotingContract.deploy({ arguments: [['Rama', 'Nick', 'Jose'].map(Web3.utils.asciiToHex)] })
                 .send(function (error, transactionHash) {
                 })
-                .then(function (deployedContract) {
+                .then(function (contractInstance) {
                     // deployedContract.options.address: instance with the new contract address
-                    const contractInstance = new web3.eth.Contract(abiDefinition, deployedContract.options.address);
+                    // const contractInstance = new web3.eth.Contract(abiDefinition, deployedContract.options.address);
+                    // console.log(contractInstance, accounts[0], 111)
                     return { contractInstance, account: accounts[0] }
                 });
         })
