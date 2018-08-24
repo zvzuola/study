@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #body{
+            margin-bottom: 10px;
+            background: #f5f5f5;
+        }
+        body{
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+        .div{
+            height: 100px;
+            width: 300px;
+            background: #f5f5f5;
+            margin-bottom: 20px;
+        }
+        .border{
+            border: 10px solid #000;
+        }
+        .padding{
+            padding: 5px;
+        }
+        .scroll {
+            overflow: scroll;
+        }
+        .scroll::after{
+            content: '';
+            display: block;
+            height: 150px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+        <!-- 既然获取窗口大小存在浏览器兼容问题，在实践中通常使用下面的代码来兼容所有浏览器：
+
+        <p>var height = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;</p>
+            
+        事实上后两种方式获取的高度和window.innerHeight是不一样的，这3个属性的值逐个变小。 具体说来，window.innerHeight包括整个DOM：内容、边框以及滚动条。
+        
+        documentElement.clientHeight不包括整个文档的滚动条，但包括<html>元素的边框。
+        body.clientHeight不包括整个文档的滚动条，也不包括<html>元素的边框，也不包括<body>的边框和滚动条 -->
+    <div id="body"></div>
+    <div id="div" class="div"></div>
+    <div id="divBorder" class="div border"></div>
+    <div id="divPadding" class="div padding"></div>
+    <div id="divBorderPadding" class="div padding border"></div>
+    <div id="divBorderScroll" class="div border scroll"></div>
+    <script>
+        function showDetail(ele, i = true) {
+            const clientHeight = ele.clientHeight
+            const scrollHeight = ele.scrollHeight
+            const offsetHeight = ele.offsetHeight
+            let str = `clientHeight: ${clientHeight} scrollHeight: ${scrollHeight} offsetHeight: ${offsetHeight} `
+            if(i) {
+                ele.innerHTML = str
+            } else {
+                str += `<br/> window.innerHeight: ${window.innerHeight} document.compatMode: ${document.compatMode}
+                <br/> document.body.clientHeight: ${document.body.clientHeight}, ocument.body.clientHeight: ${document.body.offsetHeight}, ocument.body.clientHeight: ${document.body.scrollHeight}`
+            }
+            return str
+        }
+        const str = showDetail(document.documentElement, false)
+        document.getElementById('body').innerHTML = str
+
+        window.innerHeight
+        
+        showDetail(document.getElementById('div'))
+        showDetail(document.getElementById('divPadding'))
+        showDetail(document.getElementById('divBorder'))
+        showDetail(document.getElementById('divBorderPadding'))
+        showDetail(document.getElementById('divBorderScroll'))
+        
+
+    </script>
+</body>
+</html>
