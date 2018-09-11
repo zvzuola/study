@@ -1,0 +1,78 @@
+.m-notice {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 15px;
+    margin: 10px auto;
+    border-radius: 4px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+.m-notice-success {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    border-radius: 50%;
+    background-color: #6abd00;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 4px;
+        width: 8px;
+        height: 15px;
+        border-bottom: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transform: rotateZ(45deg);
+    }
+}
+
+// .m-toast-loading {
+//     height: .40rem;
+//     margin-bottom: .28rem;
+//     /* background: url("@/res/img/my/loading_2.png") center no-repeat; */
+//     background-size: auto 100%;
+//     animation: loading 0.6s steps(12) infinite;
+// }
+// @keyframes loading {
+//     0% {
+//         transform: rotate(0);
+//     }
+//     100% {
+//         transform: rotate(360deg);
+//     }
+// }
+.noticeAppear {
+    opacity: 0;
+}
+
+.noticeAppear.noticeAppearActive {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.noticeEnter {
+    /* opacity: 0; */
+}
+
+.noticeEnter.noticeEnterActive {
+    /* opacity: 1;
+    transition: opacity 300ms ease-in; */
+}
+
+.noticeLeave {
+    opacity: 1;
+}
+
+.noticeLeave.noticeLeaveActive {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}

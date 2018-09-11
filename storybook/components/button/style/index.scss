@@ -1,4 +1,5 @@
 @import '../../style/index';
+$base-color: #40a9ff;
 
 .#{$prefix}-btn{
     border: 1px solid #d9d9d9;
@@ -12,7 +13,34 @@
     cursor: pointer;
     transition: all .3s ease-in-out;
     &:hover{
-        border-color: #40a9ff;
-        color: #40a9ff;
+        border-color: $base-color;
+        background-color: #fff;
+        color: $base-color;
     }
+
+    &-primary{
+        border-color: $base-color;
+        background-color: $base-color;
+        color: #fff;
+        &:hover {
+            border-color: $base-color;
+            background-color: $base-color;
+            color: #fff;
+            opacity: 0.8;
+        }
+    }
+
+    &-background-ghost{
+        border-color: #fff;
+        background-color: transparent !important;
+        color: #fff;
+    }
+    
+    &-background-ghost#{&}-primary {
+        border-color: $base-color;
+        background-color: transparent;
+        color: $base-color;
+    }
+
+    
 }

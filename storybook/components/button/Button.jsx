@@ -3,10 +3,14 @@ import classNames from 'classnames'
 import './style/index.scss'
 
 const Button = (props) => {
-    const { children, prefixCls, className, ...other } = props
-    const classes = classNames(prefixCls, className)
+    const { children, prefixCls, className, type, ghost, ...other } = props
+    const classes = classNames(prefixCls, className, {
+        [`${prefixCls}-${type}`]: type,
+        [`${prefixCls}-background-ghost`]: ghost,
+    })
+    const ComponentName = 'href' in other ? 'a' : 'button'
     return (
-        <button className={classes} {...other}>{children}</button>
+        <ComponentName className={classes} {...other}>{children}</ComponentName>
     )
 }
 Button.defaultProps = {
