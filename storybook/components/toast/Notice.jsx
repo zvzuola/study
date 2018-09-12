@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import classNames from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import './style/index.scss'
 
 export default class Notice extends Component {
 
     static defaultProps = {
-        transitionName: {
+        classNames: {
             enter: 'noticeEnter',
             enterActive: 'noticeEnterActive',
-            leave: 'noticeLeave',
-            leaveActive: 'noticeLeaveActive',
+            exit: 'noticeEixt',
+            exitActive: 'noticeExitActive',
             appear: 'noticeAppear',
             appearActive: 'noticeAppearActive'
         },
-        transitionTimeOut: 300,
+        timeout: 300,
         duration: 3000,
         type: 'info',
-        close: () => {}
+        close: () => { }
     }
 
     constructor(props) {
@@ -28,12 +27,12 @@ export default class Notice extends Component {
     }
 
     componentDidMount() {
-        const { transitionTimeOut, duration } = this.props
+        const { timeout, duration } = this.props
 
         if (duration) {
             this.timer = window.setTimeout(() => {
                 this.close()
-            }, duration - transitionTimeOut)
+            }, duration - timeout)
         }
     }
 
@@ -47,7 +46,7 @@ export default class Notice extends Component {
     }
 
     close = () => {
-        const { transitionTimeOut, close } = this.props
+        const { timeout, close } = this.props
 
         if (this.timer) {
             clearTimeout(this.timer)
@@ -55,30 +54,29 @@ export default class Notice extends Component {
         this.setState({ show: false })
         this.closeTimer = setTimeout(() => {
             close()
-        }, transitionTimeOut)
+        }, timeout)
     }
 
     render() {
         const { show } = this.state
-        const { transitionName, transitionTimeOut, children, icon, type } = this.props
+        const { classNames, timeout, children, icon, type } = this.props
         const iconType = type === 'info' ? icon : type
 
         return (
-            <ReactCSSTransitionGroup
-                transitionName={transitionName}
-                component="div"
-                transitionAppear
-                transitionAppearTimeout={transitionTimeOut}
-                transitionEnter
-                transitionEnterTimeout={transitionTimeOut}
-                transitionLeave
-                transitionLeaveTimeout={transitionTimeOut}
+            <CSSTransition
+                in={show}
+                classNames={classNames}
+                appear
+                enter
+                exit
+                unmountOnExit
+                timeout={timeout}
             >
-                {show && <div className='m-notice'>
+                <div className='m-notice'>
                     {iconType && <span className={`m-notice-${iconType}`}></span>}
                     {children}
-                </div>}
-            </ReactCSSTransitionGroup>
+                </div>
+            </CSSTransition>
         )
     }
 }

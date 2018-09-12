@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Button from '../components/button/Button';
 import Toast from '../components/toast/Toast';
+// import Modal from '../components/modal/Modal';
+import Tabs from '../components/tabs/Tabs';
 
 storiesOf('Button', module)
     .add('with text', () => (
@@ -34,3 +36,27 @@ storiesOf('Toast', module)
             <Button className="u-btn" onClick={() => Toast.hide()}>close Toast</Button>
         </div>
     ))
+
+// class ModalDemo extends React.Component {
+//     state = {
+//         show: false
+//     }
+
+//     render() {
+//         return (<div>
+//             <Button onClick={() => this.setState({ show: true })}>show modal</Button>
+//             <Modal show={this.state.show} maskClick={() => this.setState({ show: false })}>
+//                 <div style={{ padding: 10, backgroundColor: '#fff', borderRadius: '4px' }}>点击遮罩关闭Modal</div>
+//             </Modal>
+//         </div>)
+//     }
+// }
+
+// storiesOf('Modal', module)
+//     .add('modal', () => (<ModalDemo />))
+
+storiesOf('Tabs', module)
+    .add('normal tabs', () => (<Tabs>
+        <Tabs.TabPane label='第一项'>第一项内容</Tabs.TabPane>
+        <Tabs.TabPane label='第二项'>第二项内容</Tabs.TabPane>
+    </Tabs>))

@@ -54,7 +54,7 @@
     opacity: 0;
 }
 
-.noticeAppear.noticeAppearActive {
+.noticeAppearActive {
     opacity: 1;
     transition: opacity 300ms ease-in;
 }
@@ -63,16 +63,16 @@
     /* opacity: 0; */
 }
 
-.noticeEnter.noticeEnterActive {
+.noticeEnterActive {
     /* opacity: 1;
     transition: opacity 300ms ease-in; */
 }
 
-.noticeLeave {
+.noticeExit {
     opacity: 1;
 }
 
-.noticeLeave.noticeLeaveActive {
+.noticeExitActive {
     opacity: 0;
     transition: opacity 300ms ease-in;
 }

@@ -33,11 +33,9 @@ export default class Notices extends Component {
     }
 
     remove(notice) {
-        const { notices } = this.state
-        const index = notices.findIndex(v => v.id === notice.id)
-
-        this.setState({
-            notices: notices.slice(0, index).concat(notices.slice(index + 1))
+        this.setState(({ notices }) => {
+            const index = notices.findIndex(v => v.id === notice.id)
+            return {notices: notices.slice(0, index).concat(notices.slice(index + 1))}
         }, () => {
             if (typeof notice.onClose === 'function') {
                 notice.onClose()
