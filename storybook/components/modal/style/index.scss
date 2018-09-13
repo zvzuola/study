@@ -1,0 +1,21 @@
+.modalAppear {
+    opacity: 0.01;
+}
+.modalAppearActive {
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+}
+.modalEnter {
+    opacity: 0.01;
+}
+.modalEnterActive {
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+}
+.modalExit {
+    opacity: 1;
+}
+.modalExitActive {
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
+}

@@ -6,12 +6,12 @@ export default class Notice extends Component {
 
     static defaultProps = {
         classNames: {
+            appear: 'noticeAppear',
+            appearActive: 'noticeAppearActive',
             enter: 'noticeEnter',
             enterActive: 'noticeEnterActive',
             exit: 'noticeEixt',
             exitActive: 'noticeExitActive',
-            appear: 'noticeAppear',
-            appearActive: 'noticeAppearActive'
         },
         timeout: 300,
         duration: 3000,
