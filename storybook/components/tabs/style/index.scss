@@ -1,0 +1,32 @@
+@import '../../style/index';
+.#{$prefix}-tabs-header{
+    display: flex;
+    border-bottom: 1px solid #e8e8e8;
+}
+.#{$prefix}-tabs-tab {
+    padding: 12px 6px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: #333;
+    transition: all .3s ease-in;
+    cursor: pointer;
+    +#{&}{
+        margin-left: 30px;
+    }
+    &.active{
+        color: $base-color;
+        border-color: $base-color;
+    }
+}
+.#{$prefix}-tabs-content{
+    padding: 12px 0;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

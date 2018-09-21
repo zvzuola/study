@@ -1,4 +1,6 @@
-.m-notice {
+@import '../../style/index';
+
+.#{$prefix}-notice {
     position: relative;
     display: flex;
     width: fit-content;
@@ -15,7 +17,7 @@
     color: #fff;
 }
 
-.m-notice-success {
+.#{$prefix}-notice-success {
     position: relative;
     width: 30px;
     height: 30px;

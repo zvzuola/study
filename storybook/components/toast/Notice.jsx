@@ -16,7 +16,8 @@ export default class Notice extends Component {
         timeout: 300,
         duration: 3000,
         type: 'info',
-        close: () => { }
+        close: () => { },
+        prefixCls: 'zv-notice',
     }
 
     constructor(props) {
@@ -59,7 +60,7 @@ export default class Notice extends Component {
 
     render() {
         const { show } = this.state
-        const { classNames, timeout, children, icon, type } = this.props
+        const { classNames, timeout, children, icon, type, prefixCls } = this.props
         const iconType = type === 'info' ? icon : type
 
         return (
@@ -72,8 +73,8 @@ export default class Notice extends Component {
                 unmountOnExit
                 timeout={timeout}
             >
-                <div className='m-notice'>
-                    {iconType && <span className={`m-notice-${iconType}`}></span>}
+                <div className={prefixCls}>
+                    {iconType && <span className={`${prefixCls}-${iconType}`}></span>}
                     {children}
                 </div>
             </CSSTransition>

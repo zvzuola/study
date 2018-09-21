@@ -57,6 +57,6 @@ storiesOf('Modal', module)
 
 storiesOf('Tabs', module)
     .add('normal tabs', () => (<Tabs>
-        <Tabs.TabPane label='第一项'>第一项内容</Tabs.TabPane>
-        <Tabs.TabPane label='第二项'>第二项内容</Tabs.TabPane>
+        <Tabs.TabPane key={1} label='第一项'>第一项内容</Tabs.TabPane>
+        <Tabs.TabPane key={2} label='第二项'>第二项内容</Tabs.TabPane>
     </Tabs>))

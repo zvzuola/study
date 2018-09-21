@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import TabPane from './TabPane'
+import './style/index.scss'
 
 class Tabs extends Component {
     static propTypes = {
@@ -13,7 +14,8 @@ class Tabs extends Component {
     }
 
     static defaultProps = {
-        onChange: () => { }
+        onChange: () => { },
+        headerClassName: 'zv-tabs-header'
     }
 
     constructor(props) {
@@ -37,6 +39,7 @@ class Tabs extends Component {
             const active = this.state.selected === index;
             const disabled = child.props.disabled;
             const labelClasses = classNames({
+                'zv-tabs-tab': true,
                 'active': active,
                 'disabled': disabled,
                 [activeClassName]: !!activeClassName && active
@@ -59,7 +62,7 @@ class Tabs extends Component {
     }
 
     _getTabContent() {
-        return <div>{this.props.children[this.state.selected]}</div>
+        return <div className="zv-tabs-content">{this.props.children[this.state.selected]}</div>
     }
 
     handleLabelClick(selected) {
