@@ -62,7 +62,10 @@ class Tabs extends Component {
     }
 
     _getTabContent() {
-        return <div className="zv-tabs-content">{this.props.children[this.state.selected]}</div>
+        const child = this.props.children[this.state.selected]
+        return <div className="zv-tabs-content">
+            {React.cloneElement(child, { key: child.key || this.state.selected })}
+        </div>
     }
 
     handleLabelClick(selected) {

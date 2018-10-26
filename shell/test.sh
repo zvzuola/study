@@ -18,3 +18,4 @@ current_branch=`git rev-parse --abbrev-ref HEAD`
 echo "当前分支：$current_branch"
 pwd=`pwd`
 echo "当前目录: $pwd"
+echo "当前uid: $UID"
