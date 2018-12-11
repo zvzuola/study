@@ -5,6 +5,7 @@ import Button from '../components/button/Button';
 import Toast from '../components/toast/Toast';
 import Modal from '../components/modal/Modal';
 import Tabs from '../components/tabs/Tabs';
+import Carousel from '../components/carousel/Carousel';
 
 storiesOf('Button', module)
     .add('with text', () => (
@@ -60,3 +61,13 @@ storiesOf('Tabs', module)
         <Tabs.TabPane label='第一项'>第一项内容</Tabs.TabPane>
         <Tabs.TabPane label='第二项'>第二项内容</Tabs.TabPane>
     </Tabs>))
+
+storiesOf('Carousel', module)
+    .add('carousel', () => (<Carousel>
+        <img src="http://placehold.it/1000x400&text=slide1" style={{ maxWidth: '100%', pointerEvents: 'none', userSelect: 'none' }} />
+        <img src="http://placehold.it/1000x400&text=slide2" style={{ maxWidth: '100%', pointerEvents: 'none', userSelect: 'none' }} />
+        <img src="http://placehold.it/1000x400&text=slide3" style={{ maxWidth: '100%', pointerEvents: 'none', userSelect: 'none' }} />
+        <img src="http://placehold.it/1000x400&text=slide4" style={{ maxWidth: '100%', pointerEvents: 'none', userSelect: 'none' }} />
+        <img src="http://placehold.it/1000x400&text=slide5" style={{ maxWidth: '100%', pointerEvents: 'none', userSelect: 'none' }} />
+        <img src="http://placehold.it/1000x400&text=slide6" style={{ maxWidth: '100%', pointerEvents: 'none', userSelect: 'none' }} />
+    </Carousel>))
