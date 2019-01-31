@@ -16,9 +16,18 @@
       .item{
         display: none;
       }
+      #div{
+        height: 50px;
+        background: linear-gradient(135deg, red 70%, transparent 70%), 
+          linear-gradient(45deg, transparent 30%, red 30%),
+          linear-gradient(135deg, transparent 80%, red 80%), 
+          linear-gradient(45deg, red 20%, transparent 20%);
+        background-size: 20px;
+      }
     </style>
   </head>
   <body>
+    <div id='div'></div>
     <canvas id="canvas" width="750" height="1206"></canvas>
     <script>
       const imgList = [

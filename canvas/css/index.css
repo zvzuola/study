@@ -1,0 +1,23 @@
+*{-webkit-tap-highlight-color:rgba(255,0,0,0);max-height: 999999px; }
+body,p,b,dl,dd,table,td,th,input,button,textarea,xmp,pre,img,form,div,ul,ol,li,h1,h2,h3,h4,h5,h6,header,section,nav,footer{margin:0;padding:0;}
+img,iframe,acronym{border:0;}
+ol,ul,li{list-style:none;}
+img,input,label,button{vertical-align:middle;}
+a {star:expression(this.onFocus=this.blur()); text-decoration:none; }
+html , body{ background:#fff; height:100%;}
+body , input {font-family: 'Microsoft YaHei UI','Microsoft Yahei','Microsoft Jhenghei',helvetica,tahoma,arial,sans-serif;}
+
+@keyframes spin { 0% {
+ transform: rotate(0deg);
+}
+100% {
+ transform: rotate(360deg);
+}
+}@keyframes FD{
+ from{ transform:scale(1)} 
+ to{ transform:scale(1.2)}
+}
+@-webkit-keyframes FD {
+ from{ -webkit-transform:scale(1)}
+ to{ -webkit-transform:scale(1.2)}	
+}
