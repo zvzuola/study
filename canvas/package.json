@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "coordtransform": "^2.1.2",
     "request": "^2.88.0"
   }
 }

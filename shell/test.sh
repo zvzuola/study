@@ -19,3 +19,23 @@ echo "当前分支：$current_branch"
 pwd=`pwd`
 echo "当前目录: $pwd"
 echo "当前uid: $UID"
+
+
+# dt=$(date '+%Y-%m-%d-%H-%M-%S')
+# tmpdir="tmpdir"
+# project="xczaxq"
+# backup_dir="/cygdrive/d/webapp_backup/$dt"
+# project_dir="/cygdrive/d/webserver/apache-tomcat-8.5.33-windows-x64/apache-tomcat-8.5.33/webapps/$project"
+# yarn
+# yarn build
+# cd dist&&tar -zcvf dist.tar.gz *
+# mv dist.tar.gz /home/build/$project
+# cd /home/build/$project
+# git add .
+# git commit -m "feat: update $dt"
+# git push -u origin master
+# mkdir -p $tmpdir
+# tar -zxf dist.tar.gz -C ./$tmpdir
+# ssh administrator@10.5.1.23 "mkdir -p $backup_dir && mv $project_dir $backup_dir"
+# scp -r ./$tmpdir administrator@10.5.1.23:$project_dir
+# rm -rf $tmpdir
